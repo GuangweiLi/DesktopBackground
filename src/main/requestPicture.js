@@ -20,30 +20,6 @@ export const getPictures =  (word, option) => {
   
 const getPictureUrl = (word, option, flag) => {
   return new Promise((resolve, reject) => {
-    /*
-    const params = {
-      tn: 'resultjson_com',
-      ipn: 'rj',
-      ct: '201326592',
-      fp: 'result',
-      queryWord: word,
-      cl: 2,
-      lm: -1,
-      ie: 'utf-8',
-      oe: 'utf-8',
-      st: -1,
-      ic: 0,
-      word: word,
-      width: option.width || 1920,
-      height: option.height || 1080,
-      face: 0,
-      istype: 2,
-      nc: 1,
-      pn: pn,
-      rn: 1
-    }
-    https://image.baidu.com/search/acjson?
-    */
     const params = {
       tn: 'baiduimage',
       ie: 'utf-8',
@@ -128,3 +104,11 @@ const startTimer = (word, option) => {
     }, option.timegap * 1000 || 30000)
   })
 }
+
+(function(){
+  fs.exists('static', (flag) => {
+    if (!flag) {
+      fs.mkdirSync('static')
+    }
+  })
+})();
